@@ -4,7 +4,6 @@ import contextlib
 import mimetypes
 import os
 import platform
-import re
 import urllib.parse
 import warnings
 from uuid import uuid4
@@ -45,7 +44,7 @@ def guess_file_info_from_response(response: httpx.Response):
     # Try to extract filename from URL
     parsed_url = urllib.parse.urlparse(url)
     url_path = parsed_url.path
-    
+
     content_disposition = response.headers.get("Content-Disposition")
     filename = extract_filename(url_path, content_disposition)
 
