@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import contextlib
 import mimetypes
 import os
@@ -28,6 +30,8 @@ except ImportError:
 
 from pydantic import BaseModel
 
+from factories.file_factory.remote import extract_filename
+
 
 class FileInfo(BaseModel):
     filename: str
@@ -41,15 +45,9 @@ def guess_file_info_from_response(response: httpx.Response):
     # Try to extract filename from URL
     parsed_url = urllib.parse.urlparse(url)
     url_path = parsed_url.path
-    filename = os.path.basename(url_path)
-
-    # If filename couldn't be extracted, use Content-Disposition header
-    if not filename:
-        content_disposition = response.headers.get("Content-Disposition")
-        if content_disposition:
-            filename_match = re.search(r'filename="?(.+)"?', content_disposition)
-            if filename_match:
-                filename = filename_match.group(1)
+    
+    content_disposition = response.headers.get("Content-Disposition")
+    filename = extract_filename(url_path, content_disposition)
 
     # If still no filename, generate a unique one
     if not filename:
