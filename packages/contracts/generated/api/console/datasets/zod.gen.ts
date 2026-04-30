@@ -925,8 +925,8 @@ export const zPatchDatasetsByDatasetIdDocumentsStatusByActionBatchResponse = z.r
 )
 
 export const zDeleteDatasetsByDatasetIdDocumentsByDocumentIdPath = z.object({
-  document_id: z.string(),
   dataset_id: z.string(),
+  document_id: z.string(),
 })
 
 /**
