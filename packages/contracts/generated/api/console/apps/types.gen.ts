@@ -1816,8 +1816,8 @@ export type GetAppsByAppIdAnnotationsExportResponse
 export type DeleteAppsByAppIdAnnotationsByAnnotationIdData = {
   body?: never
   path: {
-    annotation_id: string
     app_id: string
+    annotation_id: string
   }
   query?: never
   url: '/apps/{app_id}/annotations/{annotation_id}'
@@ -3980,8 +3980,8 @@ export type PostAppsByAppIdWorkflowsDraftNodesByNodeIdTriggerRunResponse
 export type DeleteAppsByAppIdWorkflowsDraftNodesByNodeIdVariablesData = {
   body?: never
   path: {
-    node_id: string
     app_id: string
+    node_id: string
   }
   query?: never
   url: '/apps/{app_id}/workflows/draft/nodes/{node_id}/variables'
