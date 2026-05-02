@@ -15,7 +15,6 @@ from core.entities.provider_entities import (
     QuotaConfiguration,
     UnaddedModelConfiguration,
 )
-from core.shared_types import SimpleCredential, SimpleModelConfiguration
 from graphon.model_runtime.entities.common_entities import I18nObject
 from graphon.model_runtime.entities.model_entities import ModelType
 from graphon.model_runtime.entities.provider_entities import (
@@ -179,5 +178,3 @@ class ModelWithProviderEntityResponse(ProviderModelWithStatusEntity):
         dump_model = model.model_dump()
         dump_model["provider"]["tenant_id"] = tenant_id
         super().__init__(**dump_model)
-
-
