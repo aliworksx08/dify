@@ -4328,8 +4328,8 @@ export type GetAppsByAppIdWorkflowsTriggersWebhookResponse
 export type DeleteAppsByAppIdWorkflowsByWorkflowIdData = {
   body?: never
   path: {
-    app_id: string
     workflow_id: string
+    app_id: string
   }
   query?: never
   url: '/apps/{app_id}/workflows/{workflow_id}'
